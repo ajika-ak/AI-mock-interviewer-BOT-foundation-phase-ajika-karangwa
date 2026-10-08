@@ -16,3 +16,9 @@ def load_questions(file_path):
     with open(file_path, "r") as file:
         questions = json.load(file)
     return questions
+
+
+def select_random_questions(questions, count=NUM_QUESTIONS_PER_SESSION):
+    # random.sample picks unique items -- no question repeats in one session
+    count = min(count, len(questions))
+    return random.sample(questions, count)
