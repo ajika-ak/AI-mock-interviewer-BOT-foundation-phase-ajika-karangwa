@@ -1,6 +1,7 @@
 from pathlib import Path
 from interview.question_bank import *
 from interview.interview_process import *
+from evaluation.evaluate import *
 
 project_root_path = Path(__file__).resolve().parent
 QUESTIONS_FILE = project_root_path/ "data"/ "questions.json"
@@ -19,6 +20,9 @@ def main():
     for record in session_records:
         print(f"Q{record['id']}: {record['question']}")
         print(f"A: {record['answer']}\n")
+
+    evaluation = evaluate_session(session_records, selected_questions)
+    print_feedback(evaluation)
 
 
 # Entry point
