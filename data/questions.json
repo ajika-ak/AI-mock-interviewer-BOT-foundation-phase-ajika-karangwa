@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "question": "What is a Python list, and how is it different from a tuple?",
+        "keywords": ["list", "ordered", "mutable", "tuple", "immutable"]
+    },
+    {
+        "id": 2,
+        "question": "Explain how for loops and while loops work in Python.",
+        "keywords": ["for", "while", "iteration", "loop"]
+    },
+    {
+        "id": 3,
+        "question": "What is a Python dictionary and when would you use one?",
+        "keywords": ["dictionary", "key", "value", "mapping"]
+    },
+    {
+        "id": 4,
+        "question": "How does exception handling work in Python?",
+        "keywords": ["try", "except", "exception", "error", "finally"]
+    },
+    {
+        "id": 5,
+        "question": "What is the difference between a function and a method in Python?",
+        "keywords": ["function", "method", "def", "class", "object"]
+    },
+    {
+        "id": 6,
+        "question": "Explain what a module is and how you would import one.",
+        "keywords": ["module", "import", "package", "library"]
+    },
+    {
+        "id": 7,
+        "question": "What are *args and **kwargs used for in Python functions?",
+        "keywords": ["args", "kwargs", "arguments", "parameters"]
+    },
+    {
+        "id": 8,
+        "question": "How do you read from and write to a file in Python?",
+        "keywords": ["open", "read", "write", "file", "with"]
+    },
+    {
+        "id": 9,
+        "question": "What is the difference between a list and a set in Python?",
+        "keywords": ["list", "set", "unique", "duplicate", "unordered"]
+    },
+    {
+        "id": 10,
+        "question": "Explain what recursion is and give an example of when to use it.",
+        "keywords": ["recursion", "base case", "function", "calls itself"]
+    }
+]
