@@ -16,6 +16,8 @@ Matching rules:
 
 import re
 
+WEAK_THRESHOLD = 0.5  # below 50% of a question's points = weak area
+
 
 def keyword_found(keyword, answer):
     """Return True if the keyword appears in the answer as a whole word."""
@@ -52,4 +54,39 @@ def evaluate_answer(answer, keywords):
         "matched": matched,
         "missed": missed,
         "feedback": feedback,
+    }
+
+
+def evaluate_session(session_records, questions):
+    """
+    Evaluate every answer in a session.
+
+    Args:
+        session_records (list[dict]): Records with 'id', 'question', 'answer'.
+        questions (list[dict]): The questions used (needed for keywords).
+
+    Returns:
+        dict: {'results': [...], 'total_score', 'max_total', 'weak_questions'}
+    """
+    keywords_by_id = {q["id"]: q["keywords"] for q in questions}
+
+    results = []
+    for record in session_records:
+        evaluation = evaluate_answer(record["answer"], keywords_by_id[record["id"]])
+        evaluation["id"] = record["id"]
+        evaluation["question"] = record["question"]
+        results.append(evaluation)
+
+    total_score = sum(r["score"] for r in results)
+    max_total = sum(r["max_score"] for r in results)
+    weak_questions = [
+        r["question"] for r in results
+        if r["score"] / r["max_score"] < WEAK_THRESHOLD
+    ]
+
+    return {
+        "results": results,
+        "total_score": total_score,
+        "max_total": max_total,
+        "weak_questions": weak_questions,
     }
