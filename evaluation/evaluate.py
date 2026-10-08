@@ -90,3 +90,22 @@ def evaluate_session(session_records, questions):
         "max_total": max_total,
         "weak_questions": weak_questions,
     }
+
+
+def print_feedback(evaluation):
+    """Print the per-question breakdown and the final score."""
+    print("\n=== Interview Results ===")
+
+    for i, r in enumerate(evaluation["results"], start=1):
+        print(f"\nQ{i}: {r['question']}")
+        print(f"   Score: {r['score']}/{r['max_score']}")
+        print(f"   Feedback: {r['feedback']}")
+
+    print(f"\nTotal Score: {evaluation['total_score']}/{evaluation['max_total']}")
+
+    if evaluation["weak_questions"]:
+        print("\nAreas to revisit:")
+        for question in evaluation["weak_questions"]:
+            print(f"  - {question}")
+    else:
+        print("\nNo weak areas - nice work!")
